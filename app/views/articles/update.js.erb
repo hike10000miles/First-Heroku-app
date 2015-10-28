@@ -1,0 +1,5 @@
+$('#edit_article').html('<p></p>');
+$('#<%= @article.id %>').remove();
+$('#article_list').append('<%= j render(@article) %>');
+$('#show_acticle').html('<%= j render(@article) %>');
+$('#list_links').remove();

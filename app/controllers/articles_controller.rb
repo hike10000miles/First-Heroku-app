@@ -1,5 +1,7 @@
 class ArticlesController < ApplicationController
 
+  before_action :authenticate_admin!
+
   def index
   	@articles = Article.all
   end
@@ -25,13 +27,16 @@ class ArticlesController < ApplicationController
   end
 
   def edit
-	@article = Article.find(params[:id])
+	  @article = Article.find(params[:id])
   end
 
   def update
-	@article = Article.find(params[:id])
+	  @article = Article.find(params[:id])
 	if  @article.update(article_params)
-		redirect_to @article
+    respond_to do |format|
+      format.html {redirect_to @article}
+      format.js
+    end
 	else
 		render 'edit'
 	end 	

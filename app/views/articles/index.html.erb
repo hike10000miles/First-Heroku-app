@@ -4,12 +4,13 @@
 <div id="new_article"></div>
 <div  id="article_list" class="row">
 	<% @articles.each do |a| %>
-	<div class="col-md-6">
+	<div class="col-md-6" id="<%= a.id %>">
 		<h2>Title</h2>
 		<p><%= a.title %></p>
 		<h2>Content</h2>
 		<p><%= a.text %></p>
-		<p><%= link_to 'Show', article_path(a) %> | <%= link_to 'edit', edit_article_path(a) %></p>
+		<p><%= link_to 'Show', article_path(a) %> | <%= link_to 'edit', edit_article_path(a), id: "edit_link", remote: true %></p>
+		<div id="edit_article"></div>
 	</div>
 	<% end %>
 
